@@ -1,4 +1,0 @@
-include ':lib_common'
-include ':lib_logger'
-include ':app'
-rootProject.name = "wowly_common"
