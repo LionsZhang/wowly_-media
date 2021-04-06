@@ -1,0 +1,106 @@
+/**
+ * Shared file between builds so that they can all use the same dependencies and
+ * maven  repositories.
+ **/
+ext.deps = [:]
+
+def versions = [:]
+versions.android_gradle_plugin = "4.1.3"
+versions.kotlin = "1.4.32"
+versions.kotlinx = "1.3.9"
+versions.multidex = "2.0.1"
+versions.glide = "4.12.0"
+versions.retrofit = "2.3.0"
+versions.event_bus = "3.1.1"
+versions.gson = "2.8.2"
+versions.logger = "1.15"
+//Arouter
+versions.arouter_compiler = "1.5.1"
+versions.arouter_api = "1.5.1"
+//DataStore
+versions.datastore = "1.0.0-alpha06"
+//protobuf
+versions.proto = "3.11.1"
+//startup
+versions.startup = "1.0.0"
+versions.lifecycle = "2.2.0"
+//通用
+versions.material="1.2.1"
+versions.constraintlayout="2.0.4"
+versions.junit="4.13.2"
+versions.test="1.1.2"
+versions.espresso="3.3.0"
+def deps = [:]
+
+deps.material= "com.google.android.material:material:$versions.material"
+deps.constraintlayout=  "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+deps.recyclerview=  "androidx.recyclerview:recyclerview:1.1.0"
+
+//测试框架
+deps.junit=  "junit:junit:$versions.junit"
+deps.test=  "androidx.test.ext:junit:$versions.test"
+deps.espresso=  "androidx.test.espresso:espresso-core:$versions.espresso"
+//androidx组件支持
+deps.androidx="androidx.appcompat:appcompat:1.2.0"
+deps.kotx="androidx.core:core-ktx:1.3.2"
+deps.multidex = "com.android.support:multidex:$versions.multidex"
+//协程
+deps.coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinx"
+//kotlin工具
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+deps.kotlin = kotlin
+def proto = [:]
+proto.protobuf_java = "com.google.protobuf:protobuf-java:$versions.proto"
+proto.protoc = "com.google.protobuf:protobuf-java:$versions.proto"
+proto.plugin='com.google.protobuf:protobuf-gradle-plugin:0.8.8'
+deps.proto = proto
+
+def datastore = [:]
+datastore.core = "androidx.datastore:datastore-preferences-core:$versions.datastore"
+datastore.rxjava = "androidx.datastore:datastore-preferences-rxjava2:$versions.datastore"
+deps.datastore = datastore
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.adapter = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+deps.retrofit = retrofit
+
+//全局初始化
+def initializer=[:]
+initializer.startup = "androidx.startup:startup-runtime:$versions.startup"
+deps.initializer=initializer
+//生命周期组件
+def lifeCycle=[:]
+lifeCycle.livedata="androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
+lifeCycle.viewmodel="androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+deps.lifeCycle=lifeCycle
+
+//gradle 工具版本
+deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
+//other 第三方库
+deps.glide = "com.github.bumptech.glide:glide:$versions.glide"
+deps.okhttp3_integration="com.github.bumptech.glide:okhttp3-integration:$versions.glide"
+deps.glide_compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.event_bus = "org.greenrobot:eventbus:$versions.event_bus"
+deps.logger = "com.orhanobut:logger:$versions.logger"
+deps.arouter_api = "com.alibaba:arouter-api:$versions.arouter_api"
+deps.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouter_compiler"
+deps.rxjava = "io.reactivex.rxjava3:rxjava:3.0.11"
+deps.rxpermissions = "com.github.tbruyelle:rxpermissions:0.12"
+deps.recyclerViewAdapter= "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6"
+deps.gson= "com.google.code.gson:gson:$versions.gson"
+ext.deps = deps
+
+def build_versions = [:]
+build_versions.min_sdk = 16
+build_versions.target_sdk = 30
+build_versions.build_tools = "30.0.2"
+build_versions.compile_Sdk= 30
+build_versions.versionCode = 100
+build_versions.versionName = "1.0.0"
+ext.build_versions = build_versions
+

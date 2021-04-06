@@ -1,0 +1,32 @@
+ext {
+    isRelease = false
+    android = [
+            compileSdkVersion: 30,
+            buildToolsVersion: "30.0.2",
+            minSdkVersion    : 19,
+            targetSdkVersion : 30,
+            versionCode      : 100,
+            versionName      : "1.0.0",
+            kotlin_version : "1.4.32"
+    ]
+
+    // 设置是否导入maven仓库代码
+    isMaven = false
+    // 打包 先修改 isMaven 为true  顺序 imlib -> imui_lib -> rtc_lib -> qx_call_kit
+    home_version = "0.0.1"
+
+    QXIMSDK_MAVEN_GROUP_ID = "com.wowly.home"
+
+    LOCAL_MAVEN_URL = "http://nexus.tqxd.com/repository/maven-snapshots/"
+    LOCAL_MAVEN_USERNAME = "devuser"
+    LOCAL_MAVEN_PASSWORD = "devuser"
+
+
+    LOGIN_LIB_MAVEN_NAME = "home"
+    LOGIN_LIB_MAVEN_VERSION = "${home_version}-SNAPSHOT"
+
+    dependencies = [
+
+    ]
+
+}

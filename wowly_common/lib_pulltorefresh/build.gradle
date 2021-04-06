@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion build_versions.compile_Sdk
+    buildToolsVersion build_versions.build_tools
+    resourcePrefix "ptr_"
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        checkAllWarnings true
+    }
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation deps.recyclerview
+    testImplementation deps.junit
+    androidTestImplementation deps.test
+    androidTestImplementation deps.espresso
+    api deps.androidx
+    api  deps.glide
+    api  deps.recyclerViewAdapter
+}

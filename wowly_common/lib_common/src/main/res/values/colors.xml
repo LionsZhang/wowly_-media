@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFFFF</color>
+    <color name="colorPrimaryVariant">#FFFFFFFF</color>
+    <color name="colorOnPrimary">#333333</color>
+
+    <color name="common_white">#FFFFFFFF</color>
+
+    <color name="common_text_black">#333333</color>
+
+    <color name="common_text_gray_1">#666666</color>
+    <color name="common_text_gray_2">#999999</color>
+    <color name="common_text_gray_3">#CCCCCC</color>
+    <!--分割线-->
+    <color name="common_text_gray_4">#F1F1F1</color>
+    <color name="common_text_gray_5">#C8C8C8</color>
+    <color name="common_text_gray_6">#F7F7F7</color>
+    <color name="common_text_gray_7">#F4F5F7</color>
+
+
+    <color name="common_text_blue">#5083FC</color>
+    <color name="common_fill_blue_1">#C3D6FE</color>
+    <color name="common_fill_blue_2">#5083FC</color>
+    <color name="common_text_blue_3">#5B6A91</color>
+    <color name="common_text_red">#F26353</color>
+
+</resources>

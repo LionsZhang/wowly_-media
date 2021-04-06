@@ -1,0 +1,145 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+//    id 'com.google.protobuf'//引用插件
+}
+
+android {
+    compileSdkVersion build_versions.compile_Sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        multiDexEnabled true
+    }
+
+    buildTypes {
+
+        //调试环境
+        debug {
+
+            buildConfigField 'String', 'SERVER_URL', '"https://api.github.com/"'
+            buildConfigField 'boolean', 'IS_DEBUG', 'true'
+            buildConfigField 'boolean', 'IS_DEV', 'false'
+            buildConfigField 'boolean', 'IS_TEST', 'false'
+            buildConfigField 'boolean', 'IS_RELEASE', 'false'
+
+        }
+
+        //开发环境
+        dev {
+            buildConfigField 'String', 'SERVER_URL', '"https://api.github.com/"'
+            buildConfigField 'boolean', 'IS_DEBUG', 'false'
+            buildConfigField 'boolean', 'IS_DEV', 'true'
+            buildConfigField 'boolean', 'IS_TEST', 'false'
+            buildConfigField 'boolean', 'IS_RELEASE', 'false'
+
+        }
+
+        //测试环境
+        Test {
+            buildConfigField 'String', 'SERVER_URL', '"https://api.github.com/"'
+            buildConfigField 'boolean', 'IS_DEBUG', 'false'
+            buildConfigField 'boolean', 'IS_DEV', 'false'
+            buildConfigField 'boolean', 'IS_TEST', 'true'
+            buildConfigField 'boolean', 'IS_RELEASE', 'false'
+        }
+
+        //生产环境
+        release {
+            buildConfigField 'String', 'SERVER_URL', '"https://api.github.com/"'
+            buildConfigField 'boolean', 'IS_DEBUG', 'false'
+            buildConfigField 'boolean', 'IS_DEV', 'false'
+            buildConfigField 'boolean', 'IS_TEST', 'false'
+            buildConfigField 'boolean', 'IS_RELEASE', 'true'
+        }
+
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+//kotlin 注解
+    kapt {
+        generateStubs = true
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+    //设置源码引用目录
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/java'
+            }
+//            proto {
+//                srcDir 'src/main/proto'
+//            }
+        }
+    }
+
+}
+
+//protobuf {
+//    protoc {
+//        artifact = 'com.google.protobuf:protoc:3.5.1' // 也可以配置本地编译器路径
+//    }
+//    generateProtoTasks {
+//        all().each { task ->
+//            task.builtins {
+//                remove java
+//            }
+//            task.builtins {
+//                java {}// 生产java源码
+//            }
+//        }
+//    }
+//}
+
+dependencies {
+    testImplementation deps.junit
+    androidTestImplementation deps.test
+    androidTestImplementation deps.espresso
+
+    api deps.arouter_api
+    //retrofit
+    api deps.retrofit.runtime
+    api deps.retrofit.adapter
+    api deps.retrofit.gson
+    //initializer应用启动初始化
+    api deps.initializer.startup
+    //datastore
+//    implementation deps.datastore.core
+//    implementation deps.datastore.rxjava
+
+    //引用protobuf库
+//    implementation deps.proto.protobuf_java
+//    implementation deps.proto.protoc
+    api deps.kotlin.stdlib
+    api deps.multidex
+    api deps.lifeCycle.livedata
+    api deps.lifeCycle.viewmodel
+    api deps.material
+    api deps.constraintlayout
+    api deps.androidx
+    api deps.kotx
+    api deps.coroutines
+    api project(':lib_logger')
+    api project(':lib_picture')
+    api project(':lib_grant')
+    api project(':lib_pulltorefresh')
+    api project(':lib_datamanager')
+}

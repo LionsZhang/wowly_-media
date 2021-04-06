@@ -1,0 +1,30 @@
+<resources>
+    <!--按钮样式-->
+    <style name="button_style" parent="android:style/Widget.Material.Button.Borderless">
+        <item name="android:textColor">@color/common_white</item>
+        <item name="android:textSize">@dimen/sp_17</item>
+        <item name="android:background">@drawable/common_btn_selector</item>
+    </style>
+    <!--布局水平分割线样式-->
+    <style name="divider_line_style">
+        <item name="android:layout_height">@dimen/dp_1</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/common_text_gray_4</item>
+    </style>
+    <style name="loading_dialog" parent="android:style/Theme.Dialog">
+        <!--边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--半透明-->
+        <item name="android:windowIsTranslucent">false</item>
+        <!--无标题-->
+        <item name="android:windowNoTitle">true</item>
+        <!--dialog的背景-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--背景是否模糊显示-->
+        <item name="android:backgroundDimEnabled">false</item>
+        <!--是否有遮盖-->
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>

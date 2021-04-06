@@ -1,0 +1,21 @@
+rootProject.name = "wowly"
+include ':app'
+include ':wowly_media'
+include ':lib_common'
+project(':lib_common').projectDir = new File("wowly_common/lib_common")
+include ':lib_logger'
+project(':lib_logger').projectDir = new File("wowly_common/lib_logger")
+include ':lib_picture'
+project(':lib_picture').projectDir = new File("wowly_common/lib_picture")
+include ':lib_grant'
+project(':lib_grant').projectDir = new File("wowly_common/lib_grant")
+include ':lib_pulltorefresh'
+project(':lib_pulltorefresh').projectDir = new File("wowly_common/lib_pulltorefresh")
+include ':lib_datamanager'
+project(':lib_datamanager').projectDir = new File("wowly_common/lib_datamanager")
+
+//模块化模式
+if(isModule.toBoolean()) {
+    include ':common_app'
+    project(':common_app').projectDir = new File("wowly_common/app")
+}

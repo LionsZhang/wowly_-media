@@ -1,0 +1,80 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+apply from: "home_maven.gradle"
+
+
+android {
+    compileSdkVersion build_versions.compile_Sdk
+    buildToolsVersion build_versions.build_tools
+
+    //配置资源名前缀
+//    resourcePrefix "home_"
+
+    defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.versionCode
+        versionName build_versions.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        //配置ARouter
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        //调试环境
+        debug {
+
+        }
+
+        //开发环境
+        dev {
+
+        }
+
+        //测试环境
+        Test {
+        }
+
+        //生产环境
+        release {
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    kapt {
+        generateStubs = true
+    }
+
+    //数据绑定
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':lib_common')
+    api deps.constraintlayout
+    api deps.kotlin.stdlib
+    kapt deps.arouter_compiler
+    api deps.arouter_api
+    api deps.androidx
+    api deps.kotx
+
+}
